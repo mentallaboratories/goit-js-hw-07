@@ -33,11 +33,5 @@ function onImageClick(e){
     if (!e.target.classList.contains('gallery__image')){
         return;
     }
-    
-
-
-    let gallery = new SimpleLightbox('.gallery a');
-    gallery.on('show.simplelightbox', function () {
-        
-    });
+    new SimpleLightbox(".gallery a", {captionDelay:250});
 }
