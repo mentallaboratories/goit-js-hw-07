@@ -45,22 +45,36 @@ function onImageClick(e){
 
     
 
-    window.addEventListener('keydown', onEscKeyPress);
+    //document.addEventListener('keydown', onEscKeyPress);
+
+
+
+
+
+
+
+
 
     const instance = basicLightbox.create(
         
         `
  		<img width="1280" height="855" src="${imageOriginalSrc}">
-        	`)
+        	`, {
+                onShow: (instance) => {document.addEventListener('keydown', onEscKeyPress)},
+                onClose: (instance) => {document.removeEventListener('keydown', onEscKeyPress)},
+            })
             instance.show()
        
     function onEscKeyPress(e){
         if(!instance.visible){
             return
         }
-        instance.close()
-        console.log('close')
-        window.removeEventListener('keydown', onEscKeyPress)
+        instance.close(()=>{
+            console.log('close')
+        //document.removeEventListener('keydown', onEscKeyPress) 
+        
+    })
+        
     }
         
 }

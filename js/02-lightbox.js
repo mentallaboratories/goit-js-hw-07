@@ -13,7 +13,7 @@ imageGalleryContainer.innerHTML = markup;
 function createImageGalleryMarkup(galleryItems){
     return galleryItems.map(({preview, original, description}) =>{
         return `
-         <div class="gallery__item">
+         <div class="gallery">
             <a class="gallery__item" href="${original}">
             <img 
                 class="gallery__image" 
@@ -26,12 +26,13 @@ function createImageGalleryMarkup(galleryItems){
     }).join('')
 };
 
-imageGalleryContainer.addEventListener('click', onImageClick);
+//new SimpleLightbox(".gallery a", {captionDelay:250, captionsData:alt});
 
-function onImageClick(e){ 
-    e.preventDefault();
-    if (!e.target.classList.contains('gallery__image')){
-        return;
-    }
-    new SimpleLightbox(".gallery a", {captionDelay:250});
-}
+//  imageGalleryContainer.addEventListener('click', onImageClick);
+//  function onImageClick(e){ 
+//      e.preventDefault();
+//      if (!e.target.classList.contains('gallery__image')){
+//          return;
+//     }
+    const lightBox = new SimpleLightbox(".gallery a", {captionDelay:250, captionsData:"alt" });
+//}
